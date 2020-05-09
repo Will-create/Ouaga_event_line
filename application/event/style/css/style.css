@@ -2,66 +2,65 @@ body{
     background-color: gainsboro;
 }
 .nivi{
-
-
-
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  
- 
   flex-grow: 1;
 }
 
 .image img{
    height: 180px;
    width: 150px;
-
-
-
 }
-.clicable{
-  
-  
+
+.clicable{ 
   margin: 5px;
   padding: 5px;
   background-color: lightblue;
   color:black;
 }
-.clicable:hover{
 
+.clicable:hover{
   border:1px solid lightblue;
-  
   margin: 5px;
   padding: 5px;
   background-color: transparent;
   color:black;
 }
+
 .cont{
     background-color: white; 
 }
+
 .navcolor{
     margin-top: 5px;
     background-color: rgb(5, 5, 83);
     }
+
 .image{
     color: white;
     display: flex;
     flex-direction: row;
     width: 20%;
 }
+
+.images{
+    height:50vh;
+    width: 100%;
+}
+
 .navcol{
     color: white;
     font-size: 18px;
-
     }
+
 .milieu{
     background-color: rgb(227, 233, 231);
     height: 60vh;
  
     }
 
-    .foot{
+.foot{
         margin-bottom: 5px;
         background-color: rgb(5, 5, 83);
         color: white;
@@ -73,7 +72,7 @@ body{
         }
 
     
-        .slidecolor{
+.slidecolor{
             color: black;
             background-color: black;
         }
@@ -187,3 +186,40 @@ li>a :hover{
     height:70vh;
 }
 
+.couleur{
+    background-color: rgb(5, 10, 92);
+}
+.descrip{
+height: 4.5em;
+overflow: hidden;
+
+}
+.nivi{
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+
+
+  .carte{
+
+    margin: 1em;
+  }
+.errMsg{
+    color: red;
+    border: 1px solid transparent;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+    
+}
+  
+.sect-niv{
+    display: flex;
+    width: 97%;
+    height: auto;
+    border-radius: 10px;
+    background-color: white;
+
+}

@@ -14,11 +14,20 @@ class ControleurConnexion{
       }
       public function login(){
       
-      $verification=$this->model->verif();
+        if($_SESSION['email']==$_POST["email"]AND $_SESSION['password']==md5($_POST["password"])){
+         
+          $entreprise='EDIF-WP';
+          $pageTitle='Home';
+          header('Location: ../event/liste');
+
+        }else{
+          $verification=$this->model->verif();
       if($verification=='ok'){
+        
         $entreprise='EDIF-WP';
          $pageTitle='Home';
-         header('Location: ../marque/liste');
+
+         header('Location: ../event/liste');
       }else{
 
        $erreur="Mot de passe ou email incorrect";
@@ -29,19 +38,29 @@ class ControleurConnexion{
                                 'erreur'));
 
       }
+        }
+      
       
       
           
        
       }
       public function signin(){
-      
-      
-      $this->model->insertAdmin();
-      $entreprise='EDIF-WP';
-         $pageTitle='Home';
-         header('Location: ../formulaire/login');
-      
+
+      $this->model->emailverif();
+      if($this->model->emailverif()=="ok"){
+        $pageTitle='formulaire_Login';
+        $erreur='cet email existe déja veuillez vous connecter';
+        $connect='<a href="../formulaire/login">Se connecter</a>';
+        $this->rendu->render('signin',compact('pageTitle','erreur','connect'));    
+      }
+
+      else {
+        $this->model->insertAdmin();
+           header('Location: ../formulaire/login');
+        
+      }
+     
       
           
        

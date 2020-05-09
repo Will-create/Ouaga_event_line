@@ -11,7 +11,7 @@ class ControleurFormulaire{
 
 
       function __construct(){ 
-        $this->model=new Marque();
+        $this->model=new Admin();
         $this->redirect=new Http();
         $this->rendu=new Render();
       }
@@ -34,7 +34,8 @@ class ControleurFormulaire{
       $pageTitle='formulaire_Login';
       $entreprise='EDIF-WP';
       $erreur='';
-      $this->rendu->render('login',compact('pageTitle','entreprise','erreur'));    
+      $connect='';
+      $this->rendu->render('login',compact('pageTitle','entreprise','erreur','connect'));    
             
           
        
@@ -44,9 +45,9 @@ class ControleurFormulaire{
       
       
       $pageTitle='formulaire_Login';
-      $entreprise='EDIF-WP';
-      $erreur='';
-      $this->rendu->render('signin',compact('pageTitle','entreprise','erreur'));    
+      $erreur=null;
+      $connect='';
+      $this->rendu->render('signin',compact('pageTitle','erreur','connect'));    
             
           
        

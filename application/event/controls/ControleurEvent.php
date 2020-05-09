@@ -21,43 +21,24 @@ class ControleurEvent {
         $this->comment=new Comment();
       }
       
-      
-
-
-  
-      public function test(){
-
-
-
-
-        echo 'Bienvenu à Event_Line Burkina faso';
-      }
-
             
 
       public function liste(){
 
       $events=$this->model->findAll();
+      $nombres=[];
       foreach ($events as $event) {
-
-              $event['nombre']=count($this->comment->findAllByEvent($event['id_event']));
-              print_r($event);
+      $i=$event['id_event'];
+      $nombres[$i]=count($this->comment->findAllByEvent($event['id_event']));
+      
             }
-                 
-                     
+     $pageTitle="liste des evenements";
 
-
-
-// $this->rendu->render('saleAPI',compact('pageTitle',
-//   'moto','nom_marque'));
-
+     $this->rendu->render('welcome',compact('pageTitle',
+        'events','nombres'));
 }
       
       
-      
-      
-
-
 
 public function detail(){
             //montrer un seul articles
@@ -150,3 +131,5 @@ $this->redirect->vers('../marque/detail?id='.$id_marque);
 }
 
 ?>
+
+

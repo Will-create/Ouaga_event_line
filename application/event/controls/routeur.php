@@ -12,9 +12,9 @@ class Routeur{
           
           $controleur = ucfirst(strtolower($this->url[0]));
                 
-                $controleurClass = 'Controleur'.$controleur;
-                $fichierControleur = 'controls/'.$controleurClass.'.php';
-                $action=ucfirst(strtolower($this->url[1]));
+          $controleurClass = 'Controleur'.$controleur;
+          $fichierControleur = 'controls/'.$controleurClass.'.php';
+          $action=ucfirst(strtolower($this->url[1]));
       
                        
 

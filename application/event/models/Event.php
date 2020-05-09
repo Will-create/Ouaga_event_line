@@ -7,37 +7,9 @@ class Event extends Model{
       
       protected $table='event';
       
-  
-
-
-
-   public function test(){
-        echo 'Vous etes dans event';
-      }
-  
-
-public function findEvent(int $id){
-      
-    
- $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id_{$this->table} = :id");
-
-// On exécute la requête en précisant le paramètre :article_id 
-$query->execute(['id' => $id]);
-
-// On fouille le résultat pour en extraire les données réelles de l'article
-$item= $query->fetch();
-
-return $item;
-
-}
 
 public function insertEvent(){
       
-      
-
-
-
-
 $nom = null;
 if (!empty($_POST['nom'])) {
     // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire

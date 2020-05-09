@@ -1,6 +1,9 @@
+
 <div class="foot"> 
 
-<h4>www.moto@2020<h4>
+
+<h4>WWW.COPYRYTH.2020.EVENTLINE<h4>
+
 
 </div>
 </div>
