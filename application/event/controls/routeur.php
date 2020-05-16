@@ -66,6 +66,9 @@ class Routeur{
               $this->go();
         }elseif ($this->url[0]=='event') {
               
+            $this->go();
+       }elseif ($this->url[0]=='dashbord') {
+            
               $this->go();
         }elseif($this->url[0]=='home'){
               $this->go();

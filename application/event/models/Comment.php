@@ -5,7 +5,7 @@
 require_once('models/Model.php');
 class Comment extends Model{
       
-      protected $table='comments';
+      protected $table='comment';
       
       
   
@@ -38,10 +38,6 @@ $comments = $query->fetchAll();
 
 public function insertComment(){
       
-      
-
-
-
 
 $id_event = null;
 if (!empty($_POST['id_event'])) {

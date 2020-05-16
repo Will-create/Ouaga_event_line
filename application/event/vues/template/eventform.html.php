@@ -38,43 +38,54 @@
   </div>
 </nav>
 
-<h1 id="bienvenu"> Nouveau Evenement</h1>
-<div class="milieu1"> 
-<div class="gauche1"> 
-<img src="../style/img/m2.jpg" class="image2">
-</div>
-<div class="droite1"> 
-<form action="../connexion/signin" method="POST">
-  <div class="form-group">
-    <input type="text" name="titre_evement" required class="form-control champ" id="exampleFormControlInput1" placeholder="Titre de l'évement" required>
-  </div>
-  <div class="form-group">
-    <textarea class="form-control champ" > Description </textarea>
-</div>
-  <div class="form-group">
-    <input type="date" name="date_début" required class="form-control champ" id="exampleFormControlInput1" placeholder="Date de début" required>
-  </div>
-  <div class="form-group">
-    <input type="date" name="date_fin" required class="form-control champ" id="exampleFormControlInput1" placeholder="Date de fin" required>
-  </div>
-  <div class="form-group">
-    <input type="text" name="organisateur" required class="form-control champ" id="exampleFormControlInput1" placeholder="Organisateur" required>
-  </div>
-  <div class="form-group">
-    <input type="text" name="lieu" required class="form-control champ" id="exampleFormControlInput1" placeholder="Lieu" required>
-  </div>
-  <div class="form-group">
-    <input type="text" name="infoline" required class="form-control champ" id="exampleFormControlInput1" placeholder="infoline" required>
-  </div>
-  <div class="form-group row-md-6">
-  <input type="file" name="photo" class="form-controlb" id="inputPassword4" oninput="afficherPhoto(this,'profil')">
-  </div>   
+<h1 id="bienvenu">Dashbord</h1>
 
- 
-  <div class="sbouton1">
-    <input id="sendTuteurs" type="submit" value="Envoyer" name="valider"class="btn btn-outline-primary sbouton2">
-    <button class="btn btn-outline-primary sbouton2"> <a href="../formulaire/login">Annuler</a>  </button>  
-  </div>
-</form>
-</div>   
+<div class="table-responsive-xl"> 
+<?php
+      if(isset($_GET['rep']))
+      {
+        echo '<h5>'.$_GET['rep'].'</h5>';
+      }
+     ?>
+  <table class="table">
+  <thead>
+  <th></th>
+  <th>N°</th>
+  <th>Titre de l'évement</th>
+  <th>Organisateur</th>
+  <th>Lieu</th>
+  <th>Date de debut</th>
+  <th>Date de fin</th>
+  <th>Infoline</th>
+  <th>Photo</th>
+  </thead>
+  <tbody>
+  <?php
+  foreach ($events as $event) {
+  ?>
+  <tr>
+  <td><a href="../dashbord/delete?id=<?php echo $event['id_event'];?>" class="text-danger">&#10060 </a><a href="../dashbord/modifierEvent?id=<?php echo $event['id_event'];?>">&#9998</a></td>
+  <td><?= $event['id_event'] ?></td>
+  <td><?= $event['nom'] ?></td>
+  <td><?= $event['organisateur']?></td>
+  <td><?= $event['lieu'] ?></td>
+  <td><?= $event['date_debut'] ?></td>
+  <td><?= $event['date_fin'] ?></td>
+  <td><?= $event['infoline'] ?></td>
+  <td><?= $event['photo'] ?></td>
+  </tr>
+  <?php  
+  }
+  ?>
+  </tbody>
+  </table>
 </div>
+<br>
+<button class="btn btn-outline-primary sbouton2"> <a href="../formulaire/enregistrement">Nouveau</a>  </button>  
+
+
+
+
+
+
+

@@ -11,7 +11,7 @@ class ControleurHome{
 
 
       function __construct(){ 
-        $this->model=new Event();
+        $this->model=new Events();
         $this->redirect=new Http();
         $this->rendu=new Render();
       }

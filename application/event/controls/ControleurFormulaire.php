@@ -20,12 +20,12 @@ class ControleurFormulaire{
       
       
       
-      $pageTitle='formulaire_marque';
+      $pageTitle='formulaire_login';
       $entreprise='EDIF-WP';
       $this->rendu->render('markform',compact('pageTitle','entreprise'));    
             
           
-       
+
       }
       public function login(){
       
@@ -56,26 +56,13 @@ class ControleurFormulaire{
 
 
 
-      public function formMoto(){
-      
-      $id = null;
-
-// Mais si il y'en a un et que c'est un nombre entier, alors c'est cool
-if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
-    $id= $_GET['id'];
-}
-
-// On peut désormais décider : erreur ou pas ?!
-if (!$id) {
-    die("Vous devez préciser un paramètre `id` dans l'URL !");
-}
-
-      
-      $pageTitle='formulaire_Moto';
-      $entreprise='EDIF-WP';
-      $id_marque=$id;
-      $this->rendu->render('motoform',compact('pageTitle','entreprise','id_marque'));    
-            
+ public function enregistrement(){
+    $pageTitle='Dashbord';
+    $erreur=null;
+    $entreprise='liste des evenements';
+    $connect='';
+    $this->rendu->render('enregistrement',compact('pageTitle','erreur','entreprise','connect'));    
+             
           
        
       }

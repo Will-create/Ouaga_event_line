@@ -5,15 +5,28 @@
 require_once('models/Model.php');
 class Event extends Model{
       
-      protected $table='event';
+      protected $table='events';
       
 
 public function insertEvent(){
-      
+
+
+$id_event = null;
+if (!empty($_POST['id_event'])) {
+    // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
+     $nom = htmlspecialchars($_POST['id_event']);
+ }
+
+
 $nom = null;
 if (!empty($_POST['nom'])) {
     // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
     $nom = htmlspecialchars($_POST['nom']);
+}
+$descriptions= null;
+if (!empty($_POST['descriptions'])) {
+    // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
+    $descriptions= htmlspecialchars($_POST['descriptions']);
 }
 
 $organisateur= null;
@@ -48,9 +61,6 @@ if (!empty($_POST['infoline'])) {
 }
 
 
-
-
-
 $photo= null;
 if (!empty($_FILES['photo'])) {
     // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
@@ -58,19 +68,52 @@ if (!empty($_FILES['photo'])) {
          
 }
 
+move_uploaded_file($photo['tmp_name'], '/style/img/'.$nom.'logo.jpg');
 
-move_uploaded_file($photo['tmp_name'], '/style/img/'.$model.'logo.jpg');
-
-
-  $pdo=getpdo();
-$requette=$pdo->prepare('INSERT INTO moto(id_marque,model, cylindre, stock,prix,photo) value(?,?,?,?,?,?)');
-$requette->execute (array($id_marque,$model,$cylindre,$stock,$prix,'../style/img/'.$model.'logo.jpg')); 
-
-
-
-
+$pdo=$this->pdo;
+$requette=$pdo->prepare('INSERT INTO events(id_event,nom,descriptions,date_debut,date_fin,organisateur,lieu,infoline,photo) value(?,?,?,?,?,?,?,?,?)');
+$requette->execute (array($id_event,$nom,$descriptions,$organisateur,$lieu,$date_debut,$date_fin,$infoline,'../style/img/'.$nom.'logo.jpg')); 
 
 
 }
-  
+
+public function deleteEvent(int $id){
+   
+    $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id_event = :id");
+    $query->execute(['id' => $id]);
+    }
+
+
+function modifier($id,$nom,$descriptions,$date_debut,$date_fin,$organisateur,$lieu,$infoline,$photo){
+    $mod=$this->pdo->prepare("UPDATE events SET id_event=:id nom=:nomm,descriptions=:descriptionsm,date_debut=:date_debutm,date_fin=:date_finm,organisateur=:organisateurm,lieu=:lieum,infoline=:infolinem,photo=:photom WHERE id=:id");
+    $mod->execute(array(
+        "id"=>$id,
+        "nomm"=>$nom,
+        "descriptionm"=>$descriptions,
+        "date_debutm"=>$date_debut,
+        "date_finm"=>$date_fin,
+        "organisateurm"=>$organisateur,
+        "lieum"=>$lieu,
+        "infolinem"=>$infoline,
+        "photom"=>$photo
+      
+        ));
+
+    } 
+    
+    public function findEvent(int $id){
+      
+    
+        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id_event = :id");
+       
+       // On exécute la requête en précisant le paramètre :article_id 
+       $query->execute(['id' => $id]);
+       
+       // On fouille le résultat pour en extraire les données réelles de l'article
+       $item= $query->fetch();
+       
+       return $item;
+       
+       }
 }
+

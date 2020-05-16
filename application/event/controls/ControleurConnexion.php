@@ -17,17 +17,17 @@ class ControleurConnexion{
         if($_SESSION['email']==$_POST["email"]AND $_SESSION['password']==md5($_POST["password"])){
          
           $entreprise='EDIF-WP';
-          $pageTitle='Home';
-          header('Location: ../event/liste');
+          $pageTitle='eventform';
+          header('Location: ../dashbord/liste');
 
         }else{
           $verification=$this->model->verif();
       if($verification=='ok'){
         
         $entreprise='EDIF-WP';
-         $pageTitle='Home';
+         $pageTitle='eventform';
 
-         header('Location: ../event/liste');
+         header('Location: ../dashbord/liste');
       }else{
 
        $erreur="Mot de passe ou email incorrect";
@@ -76,11 +76,6 @@ class ControleurConnexion{
 
 
       }
-
-      
-
-
-
 
       
 

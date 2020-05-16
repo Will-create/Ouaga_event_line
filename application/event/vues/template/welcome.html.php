@@ -109,7 +109,7 @@
   <img src="../style/img/m2.jpg" class="card-img-top" alt="...">
   <div class="card-body">
      <h3 class="card-title"><?= $event['nom'] ?></h3>
-     <p class="descrip"> <?= $event['description'] ?>                </p>
+     <p class="descrip"> <?= $event['descriptions'] ?>                </p>
      <button class="btn couleur btn-primary">Commentaire( <?= $nombres[$event['id_event']] ?> )</button>
 <a  href="./detail?id=<?= $event['id_event']?>" class="btn couleur btn-primary">DETAILS</a>
 
